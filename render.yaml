@@ -1,0 +1,23 @@
+services:
+  - type: worker
+    name: youtube-horror-automation
+    env: python
+    buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y ffmpeg
+    startCommand: python scheduler.py
+    envVars:
+      - key: OPENAI_API_KEY
+        value: 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
+      - key: YOUTUBE_CLIENT_ID
+        value: 466877617670-me1ssecut3t5q88a1jh7ovq1efa7kobb.apps.googleusercontent.com
+      - key: YOUTUBE_CLIENT_SECRET
+        value: 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
+      - key: YOUTUBE_REFRESH_TOKEN
+        value: 1//03yThVVHZmoh4CgYIARAAGAMSNwF-L9Irm1RhB2Bq7O5hZwtI1_ee43K77H6dnCZsThMQuCrhmJ1YIN4tf1qnDsx6l6lk7VkmLJw
+      - key: YOUTUBE_TOKEN_URI
+        value: https://oauth2.googleapis.com/token
+      - key: YOUTUBE_SCOPES
+        value: https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly
+      - key: AUTOMATION_INTERVAL_MINUTES
+        value: 288
+      - key: RUN_IMMEDIATELY
+        value: true
